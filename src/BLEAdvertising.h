@@ -55,6 +55,7 @@ public:
 	void setAdvertisementData(BLEAdvertisementData& advertisementData);
 	void setScanFilter(bool scanRequertWhitelistOnly, bool connectWhitelistOnly);
 	void setScanResponseData(BLEAdvertisementData& advertisementData);
+	void setAdvertisementInterval(uint16_t min, uint16_t max);
 
 private:
 	esp_ble_adv_data_t   m_advData;

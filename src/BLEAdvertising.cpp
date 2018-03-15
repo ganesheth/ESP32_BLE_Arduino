@@ -61,6 +61,13 @@ BLEAdvertising::BLEAdvertising() {
 	m_customScanResponseData      = false;   // No custom scan response data
 } // BLEAdvertising
 
+void BLEAdvertising::setAdvertisementInterval(uint16_t min, uint16_t max)
+{
+	m_advData.min_interval        = min;
+	m_advData.max_interval        = max;
+	m_advParams.adv_int_min       = min;
+	m_advParams.adv_int_max       = max;
+}
 
 /**
  * @brief Add a service uuid to exposed list of services.
