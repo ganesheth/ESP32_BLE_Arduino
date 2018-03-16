@@ -375,12 +375,14 @@ uint16_t   BLEDevice::m_localMTU = 23;
 			return;
 		}
 #endif   // CONFIG_GATTS_ENABLE
-
-		errRc = ::esp_ble_gap_set_device_name(deviceName.c_str());
-		if (errRc != ESP_OK) {
-			ESP_LOGE(LOG_TAG, "esp_ble_gap_set_device_name: rc=%d %s", errRc, GeneralUtils::errorToString(errRc));
-			return;
-		};
+		if(!deviceName.empty())
+		{
+			errRc = ::esp_ble_gap_set_device_name(deviceName.c_str());
+			if (errRc != ESP_OK) {
+				ESP_LOGE(LOG_TAG, "esp_ble_gap_set_device_name: rc=%d %s", errRc, GeneralUtils::errorToString(errRc));
+				return;
+			};
+		}
 
 		esp_ble_io_cap_t iocap = ESP_IO_CAP_NONE;
 		errRc = ::esp_ble_gap_set_security_param(ESP_BLE_SM_IOCAP_MODE, &iocap, sizeof(uint8_t));

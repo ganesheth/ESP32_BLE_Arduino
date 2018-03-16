@@ -37,10 +37,10 @@ static const char* LOG_TAG = "BLEAdvertising";
  */
 BLEAdvertising::BLEAdvertising() {
 	m_advData.set_scan_rsp        = false;
-	m_advData.include_name        = true;
-	m_advData.include_txpower     = true;
-	m_advData.min_interval        = 0x20;
-	m_advData.max_interval        = 0x40;
+	m_advData.include_name        = false;
+	m_advData.include_txpower     = false;
+	m_advData.min_interval        = 0x1F40;
+	m_advData.max_interval        = 0x1F40;
 	m_advData.appearance          = 0x00;
 	m_advData.manufacturer_len    = 0;
 	m_advData.p_manufacturer_data = nullptr;
@@ -50,8 +50,8 @@ BLEAdvertising::BLEAdvertising() {
 	m_advData.p_service_uuid      = nullptr;
 	m_advData.flag                = (ESP_BLE_ADV_FLAG_GEN_DISC | ESP_BLE_ADV_FLAG_BREDR_NOT_SPT);
 
-	m_advParams.adv_int_min       = 0x20;
-	m_advParams.adv_int_max       = 0x40;
+	m_advParams.adv_int_min       = 0x1F00;
+	m_advParams.adv_int_max       = 0x1F40;
 	m_advParams.adv_type          = ADV_TYPE_IND;
 	m_advParams.own_addr_type     = BLE_ADDR_TYPE_PUBLIC;
 	m_advParams.channel_map       = ADV_CHNL_ALL;
